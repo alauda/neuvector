@@ -31,7 +31,7 @@ func SetGlobalObjects(rtSocket string, regResource RegisterDriverFunc) (string, 
 	SYS = system.NewSystemTools()
 
 	RT, err = container.Connect(rtSocket, SYS)
- 	if err != nil {
+	if err != nil {
 		return "", "", "", nil, err
 	}
 
@@ -120,6 +120,8 @@ func normalize(platform, flavor string) (string, string) {
 		flavor = share.FlavorIKE
 	case strings.ToLower(share.FlavorGKE):
 		flavor = share.FlavorGKE
+	case strings.ToLower(share.FlavorACP):
+		flavor = share.FlavorACP
 	}
 
 	return platform, flavor

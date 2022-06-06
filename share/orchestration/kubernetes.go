@@ -397,7 +397,7 @@ func (d *kubernetes) GetService(meta *container.ContainerMeta) *Service {
 	// pod.name can take format such as, frontend-3823415956-853n5, calico-node-m308t, kube-proxy-8vbrs.
 	// For the first case, the pod-template-hash is 3823415956, if the hash label exists, we remove it.
 	if pod, _ := meta.Labels[container.KubeKeyPodName]; pod != "" {
-		return d.GetServiceFromPodLabels( namespace, pod, meta.Labels)
+		return d.GetServiceFromPodLabels(namespace, pod, meta.Labels)
 	}
 
 	return baseDriver.GetService(meta)
@@ -426,6 +426,10 @@ func (d *kubernetes) GetPlatformRole(m *container.ContainerMeta) (string, bool) 
 		}
 		if vpodns == container.KubeRancherIngressNamespace && strings.HasPrefix(m.Image, "rancher/") {
 			return container.PlatformContainerRancherInfra, false
+		}
+	} else if d.flavor == share.FlavorACP {
+		if vpodns == container.KubeACPPodNamespace {
+			return container.PlatformContainerACPInfra, false
 		}
 	}
 
