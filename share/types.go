@@ -88,6 +88,7 @@ const (
 	FlavorRancher   = "Rancher"
 	FlavorIKE       = "IKE"
 	FlavorGKE       = "GKE"
+	FlavorACP       = "ACP"
 
 	NetworkFlannel   = "Flannel"
 	NetworkCalico    = "Calico"

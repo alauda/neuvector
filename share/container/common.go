@@ -80,6 +80,10 @@ const (
 )
 
 const (
+	KubeACPPodNamespace string = "cpaas-system"
+)
+
+const (
 	AliyunSystem string = "aliyun.system"
 	AliyunAddon  string = "aliyun.addon"
 )
@@ -110,6 +114,7 @@ const (
 	PlatformContainerECSAgent            = "ECS-Agent"
 	PlatformContainerIstioInfra          = "Istio-System-POD"
 	PlatformContainerLinkerdInfra        = "Linkerd-System-POD"
+	PlatformContainerACPInfra            = "ACP"
 )
 
 // var rt Runtime
